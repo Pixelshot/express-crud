@@ -48,8 +48,9 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
+  // We use .filter() to single out the user(via id) that we want to delete
   // .filter() returns everything that is true and removes all that is false
-  // This function is going to keep all users except the one we're pointing to
+  // This function keeps all users except for the one we're referring to
   users = users.filter((user) => user.id !== id);
 
   res.send(`Users with the id ${id} has been deleted`);
