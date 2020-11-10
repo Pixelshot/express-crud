@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 // Using express's Router function for our get request
 const router = express.Router();
 
-const users = [];
+let users = [];
 
 // All routes in here are already starting with '/users'. This setup can be found in index.js
 router.get('/', (req, res) => {
@@ -42,6 +42,17 @@ router.get('/:id', (req, res) => {
   // How to grab the specific user from our database
   const foundUser = users.find((user) => user.id === id);
   res.send(foundUser);
+});
+
+// Deleting a specific user
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  // .filter() returns everything that is true and removes all that is false
+  // This function is going to keep all users except the one we're pointing to
+  users = users.filter((user) => user.id !== id);
+
+  res.send(`Users with the id ${id} has been deleted`);
 });
 
 export default router;
