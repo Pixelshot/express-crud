@@ -54,14 +54,4 @@ export const updateUser = (req, res) => {
 };
 
 // === === === DELETE A USER === === ===
-export const deleteUser = (req, res) => {
-  const { id } = req.params;
-
-  // We use .filter() to single out the user(via id) that we want to delete
-  // .filter() returns everything that is true and removes all that is false
-  // This function keeps all users except for the one we're referring to
-  // If this is producing an error, just move this function to the original file and it'll work
-  users = users.filter((user) => user.id !== id);
-
-  res.send(`Users with the id ${id} has been deleted`);
-};
+// Can be found in original file
